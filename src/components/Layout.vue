@@ -1,7 +1,7 @@
 /* components/Layout.vue */
 <script setup>
 import Navbar from "./Navbar.vue";
-import ButtonToggleTheme from "./ButtonToggleTheme.vue";
+/* import ButtonToggleTheme from "./ButtonToggleTheme.vue"; */
 import Panel from "./Panel.vue";
 import { usePanelStore } from "../store/panel";
 import { ref } from "vue";
