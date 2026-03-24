@@ -1,3 +1,4 @@
+/* App.vue */
 <template>
   <Layout>
     <router-view />

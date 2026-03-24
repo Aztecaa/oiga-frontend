@@ -1,16 +1,14 @@
-// 📌 Acá definís las páginas y rutas de la app
+//../router/index.js
 
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '../store/user'
 
 const routes = [
-    { path: '/', component: () => import('../views/Home.vue') },
+    { path: '/', component: () => import('../views/Stock.vue') },
     { path: '/login', component: () => import('../components/Login.vue') },
-    { path: '/panel', component: () => import('../views/Panel.vue'), meta: { requiresAuth: true, role: ['supervisor'] } },
-    { path: '/ventas', component: () => import('../views/Ventas.vue'), meta: { requiresAuth: true, role: ['cajero', 'supervisor'] } },
     { path: '/dashboard', component: () => import('../views/Dashboard.vue'), meta: { requiresAuth: true } },
     {
-        path: '/users', component: () => import('../views/Users.vue'), meta: { requiresAuth: true, role: 'supervisor' }  // 🔗 Marcamos ruta protegida 
+        path: '/users', component: () => import('../views/Users.vue'), meta: { requiresAuth: true, roles: 'supervisor' }  // 🔗 Marcamos ruta protegida 
     }
 ]
 

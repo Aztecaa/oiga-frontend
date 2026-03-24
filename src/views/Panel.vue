@@ -1,1 +1,0 @@
-<template><h3>Esto deberia ver el supervisor</h3></template>

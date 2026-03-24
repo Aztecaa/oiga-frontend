@@ -1,3 +1,4 @@
+//user.js
 // 📌 Store de ejemplo: maneja lista de usuarios
 // 👉 Lo podés eliminar sin afectar la app base si no vas a usar usuarios
 
