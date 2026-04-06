@@ -221,13 +221,9 @@ function formatearParaInput(fecha) {
 function formatearFecha(fecha) {
   if (!fecha) return "-";
 
-  const f = new Date(fecha);
+  const [anio, mes, dia] = fecha.split("T")[0].split("-");
 
-  const dia = String(f.getDate()).padStart(2, "0");
-  const mes = String(f.getMonth() + 1).padStart(2, "0");
-  const anio = String(f.getFullYear()).slice(-2);
-
-  return `${dia}/${mes}/${anio}`;
+  return `${dia}/${mes}/${anio.slice(-2)}`;
 }
 
 function estadoLote(fecha) {
