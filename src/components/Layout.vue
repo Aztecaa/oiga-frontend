@@ -1,20 +1,16 @@
-/* components/Layout.vue */
 <script setup>
-import Navbar from "./Navbar.vue";
-/* import ButtonToggleTheme from "./ButtonToggleTheme.vue"; */
+import Navbar from "./Navbar.vue"
 import Panel from "./Panel.vue";
 import { usePanelStore } from "../store/panel";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const isDark = ref(false);
 
 const panel = usePanelStore();
 
-// Función para alternar tema
-const toggleTheme = () => {
-  isDark.value = !isDark.value;
-  document.documentElement.classList.toggle("dark", isDark.value);
-};
+onMounted(() => {
+  panel.cargarConfig();
+});
 </script>
 
 <template>

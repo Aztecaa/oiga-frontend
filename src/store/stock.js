@@ -6,7 +6,7 @@ export const useStockStore = defineStore("stock", {
 
   state: () => ({
     productos: [],
-    categorias: ["bebidas", "chocolates", "cigarrillos"]
+    categorias: ["bebidas", "chocolates", "cigarrillos", "caramelos", "gomitas", "chicles", "accesorios", "tecnologia"]
   }),
 
   actions: {
@@ -16,7 +16,13 @@ export const useStockStore = defineStore("stock", {
     },
 
     async agregarProducto(data) {
+
       const { data: res } = await api.post("/productos", data)
+      this.productos = res
+    },
+    async editarLote(data) {
+      console.log(data)
+      const { data: res } = await api.put(`/productos/${data.codigo}/lote`, data)
       this.productos = res
     },
 

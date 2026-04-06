@@ -13,10 +13,9 @@ export const usePanelStore = defineStore('panel', {
                     nombre: true,
                     lotes: true,
                     categoria: true,
+                    cantidad: true,
                     acciones: true
                 },
-
-                // 🔴 ESTO FALTABA
                 vencimientos: {
                     rojo: 7,
                     amarillo: 30,
@@ -31,11 +30,26 @@ export const usePanelStore = defineStore('panel', {
             this.contexto = ctx
             this.abierto = true
         },
+
         cerrar() {
             this.abierto = false
         },
+
         toggleColumna(col) {
             this.config.stock.columnas[col] = !this.config.stock.columnas[col]
+            this.guardarConfig()
+        },
+
+        guardarConfig() {
+            localStorage.setItem('panel_config', JSON.stringify(this.config))
+        },
+
+        cargarConfig() {
+            const data = localStorage.getItem('panel_config')
+
+            if (data) {
+                this.config = JSON.parse(data)
+            }
         }
     },
 })

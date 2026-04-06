@@ -1,3 +1,4 @@
+/* src/componets/Panel.vue */
 <script setup>
 import { usePanelStore } from "../store/panel";
 import { ref } from "vue";
@@ -7,6 +8,13 @@ const panel = usePanelStore();
 
 const stock = useStockStore();
 const nuevaCategoria = ref("");
+
+function agregarCategoria() {
+  if (!nuevaCategoria.value.trim()) return;
+
+  stock.agregarCategoria(nuevaCategoria.value);
+  nuevaCategoria.value = ""; // 👈 limpiar input
+}
 </script>
 
 <template>
@@ -26,6 +34,7 @@ const nuevaCategoria = ref("");
             <input class="w-11 p-1"
               type="number"
               v-model="panel.config.stock.vencimientos.rojo"
+              @change="panel.guardarConfig()"
             />
           </label>
 
@@ -34,6 +43,7 @@ const nuevaCategoria = ref("");
             <input class="w-11 p-1"
               type="number"
               v-model="panel.config.stock.vencimientos.amarillo"
+              @change="panel.guardarConfig()"
             />
           </label>
 
@@ -42,6 +52,7 @@ const nuevaCategoria = ref("");
             <input class="w-11 p-1"
               type="number"
               v-model="panel.config.stock.vencimientos.verde"
+              @change="panel.guardarConfig()"
             />
           </label>
         </div>
@@ -58,7 +69,7 @@ const nuevaCategoria = ref("");
           </div>
 
           <input v-model="nuevaCategoria" placeholder="Nueva categoría" />
-          <button @click="stock.agregarCategoria(nuevaCategoria)">
+          <button @click="agregarCategoria">
             Agregar
           </button>
         </div>
